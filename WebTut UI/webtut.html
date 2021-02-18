@@ -1,0 +1,148 @@
+<html>
+<head>
+<title>WEBTUT</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	 <style>
+.Nav{
+	display:flex;
+	margin-top:5px;
+	height:30%;
+	background:#735a1cab;
+	}
+.icon{
+	height:80px;
+	width:80px;
+	padding-left:40%;
+	padding-top:20px
+	}
+	label{
+	padding-top:90px;
+	padding-right :10px;
+	font-size:30px; 
+	padding-left:40px
+	}
+.homelanding{
+	height:80%;
+	}
+	
+.img {
+	height: 200px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+var cnt = 40;
+function add(itemName) {
+	var itemBody = {
+			"itemId": cnt++, 
+			"itemName" : itemName, 
+			"cost": 15.0 
+	};
+	
+	$.ajax({
+      url: "http://localhost:8080/wishlist/add?userId=12",
+      type: "post",
+	  crossDomain: true,
+      dataType: "jsonp",
+	  contentType: "application/json",
+      data: JSON.stringify(itemBody),
+      success: function(data) { 
+		console.log(data);
+	  },
+	  error: function(data) {
+		console.log(data);
+	  }
+	});
+}
+
+function listAll() {
+	var saveData = $.ajax({
+      type: "GET",
+      url: "http://localhost:8080/wishlist/all?userId=12",
+	  crossDomain: true,
+      dataType: "jsonp",
+      success: function(resultData) { 
+		console.log(resultData);
+	  }
+	});
+}
+</script>
+</head>
+<body>
+<div class="Nav">
+<!--<img class="icon" src="C:\Users\pc\Pictures\Screenshots\Screenshot (59).png"></img> -->
+<label onClick="listAll();" >Wishlist</label>
+<label>Home</label>
+<label>Product</label>
+<label>Category</label>
+<label>Admin</label>
+</div>
+<div class="container">
+	<div class="row" style="margin-top: 10px;">
+		<div class="col">
+			<div class="card" style="width: 18rem;">
+			  <img class="card-img-top img" src="Mi9.jpg" alt="Card image cap">
+			  <div class="card-body">
+				<h5 class="card-title">MI 9</h5>
+				<p class="card-text">Electronic Item Mobile.</p>
+				<button type="button" onClick="add('mi9');" class="btn btn-primary">Add to WishList</button>
+			  </div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card" style="width: 18rem">
+			  <img class="card-img-top img" src="sh.jpg" alt="Card image cap">
+			  <div class="card-body">
+				<h5 class="card-title">Sony HeadPhone</h5>
+				<p class="card-text">Electronic Item HeadPhone</p>
+				<button type="button" onClick="add('sony headphone');" class="btn btn-primary">Add to WishList</button>
+			  </div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card" style="width: 18rem;">
+			  <img class="card-img-top img" src="na.jpg" alt="Card image cap">
+			   <div class="card-body">
+				<h5 class="card-title">Nike Air Max 270</h5>
+				<p class="card-text">Shoes Items</p>
+				<button type="button" onClick="add('nike air');" class="btn btn-primary">Add to WishList</button>
+			  </div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row" style="margin-top: 10px;">
+		<div class="col">
+			<div class="card" style="width: 18rem;">
+			  <img class="card-img-top img" src="re7.jpg" alt="Card image cap">
+			  <div class="card-body">
+				<h5 class="card-title">Realme 7</h5>
+				<p class="card-text">Electronic Item Mobile.</p>
+				<button type="button" onClick="add('realme 7');" class="btn btn-primary">Add to WishList</button>
+			  </div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card" style="width: 18rem">
+			  <img class="card-img-top img" src="bh.jpg" alt="Card image cap">
+			  <div class="card-body">
+				<h5 class="card-title">Bose HeadPhone</h5>
+				<p class="card-text">Electronic Item HeadPhone</p>
+				<button type="button" onClick="add('bose headphone');" class="btn btn-primary">Add to WishList</button>
+			  </div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card" style="width: 18rem;">
+				<img class="card-img-top img" src="nc.jpg" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Nike Casual Shoes</h5>
+					<p class="card-text">Shoes Items</p>
+					<button type="button" onClick="add('nike casual');" class="btn btn-primary">Add to WishList</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

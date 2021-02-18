@@ -1,0 +1,17 @@
+create table wishlist (
+	id int auto_increment,
+    user_id int,
+    item_id int,
+    create_date date,
+    PRIMARY KEY (id)
+);
+
+create table item (
+	item_id int auto_increment,
+    item_name varchar(30),
+    cost double,
+    PRIMARY KEY (itemId)
+);
+
+select * from wishlist;
+select * from item;
